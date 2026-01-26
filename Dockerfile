@@ -1,8 +1,8 @@
 FROM python:3.11-slim
 
 # Метаданные
-LABEL maintainer="Barco ICMP Control"
-LABEL description="Web interface for Barco ICMP control"
+LABEL maintainer="Easy Cinema Control"
+LABEL description="Multi-hall cinema control system for Barco ICMP"
 
 # Рабочая директория
 WORKDIR /app
@@ -10,12 +10,16 @@ WORKDIR /app
 # Копирование requirements и установка зависимостей
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt && \
-    pip install --no-cache-dir gunicorn
+    pip install --no-cache-dir gunicorn eventlet
 
 # Копирование файлов приложения
-COPY barco_web.py .
+COPY barco_multi_hall.py .
+COPY greetings.txt .
 COPY templates/ templates/
 COPY static/ static/
+
+# Создание директории для логов
+RUN mkdir -p /app/logs
 
 # Создание непривилегированного пользователя
 RUN useradd -m -u 1000 appuser && \
@@ -26,9 +30,5 @@ USER appuser
 # Открытие порта
 EXPOSE 5000
 
-# Health check
-HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
-    CMD python -c "import urllib.request; urllib.request.urlopen('http://localhost:5000/api/status')"
-
 # Запуск приложения
-CMD ["gunicorn", "--worker-class", "eventlet", "-w", "1", "--bind", "0.0.0.0:5000", "--access-logfile", "-", "--error-logfile", "-", "barco_web:app"]
+CMD ["python", "barco_multi_hall.py"]

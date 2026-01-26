@@ -1,17 +1,21 @@
 version: '3.8'
 
 services:
-  barco-control:
+  easycinema:
     build: .
-    container_name: barco-control-web
+    container_name: easycinema-multihall
     ports:
       - "5000:5000"
     restart: unless-stopped
     environment:
       - FLASK_ENV=production
       - TZ=Europe/Moscow
+    volumes:
+      - ./halls_config.json:/app/halls_config.json:ro
+      - ./greetings.txt:/app/greetings.txt:ro
+      - ./logs:/app/logs
     networks:
-      - barco-network
+      - cinema-network
     logging:
       driver: "json-file"
       options:
@@ -19,5 +23,5 @@ services:
         max-file: "3"
 
 networks:
-  barco-network:
+  cinema-network:
     driver: bridge
