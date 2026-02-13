@@ -31,8 +31,8 @@ class CP750AudioProcessor(AudioProcessor):
 class JSD100AudioProcessor(AudioProcessor):
     """Аудио для JSD100: специальные команды с разделителем \09 и завершением \0D"""
     def _send_jsd(self, send_fn, payload: str):
-        # Формат: jsd100.Send Text,"<payload>\0D"
-        return send_fn(f'jsd100.Send Text,"{payload}\0D"')
+        # Формат: JSD100.Send Text,"<payload>\0D" (устройство: JSD100)
+        return send_fn(f'JSD100.Send Text,"{payload}\0D"')
 
     def set_volume(self, send_fn, level: float):
         # Уровень 0-5.5 -> фейдер: jsd100.sys.fader\09<XX>0
