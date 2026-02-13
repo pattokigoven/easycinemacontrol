@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  easycinema:
+    build: .
+    container_name: easycinema-multihall
+    ports:
+      - "5000:5000"
+    restart: unless-stopped
+    environment:
+      - FLASK_ENV=production
+      - TZ=Europe/Moscow
+    volumes:
+      - ./halls_config.json:/app/halls_config.json:ro
+      - ./greetings.txt:/app/greetings.txt:ro
+      - ./logs:/app/logs
+    networks:
+      - cinema-network
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+networks:
+  cinema-network:
+    driver: bridge
