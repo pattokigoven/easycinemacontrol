@@ -25,7 +25,7 @@ class CP750AudioProcessor(AudioProcessor):
     def set_volume(self, send_fn, level: float):
         # Уровень 0-5.5 -> фейдер в десятых (как было)
         fader_value = int(float(level) * 10)
-        return send_fn(f'cp750.Send Text,"cp750.sys.fader {fader_value}"')
+        return send_fn(f'Dolby CP750.Send Text,"cp750.sys.fader {fader_value}"')
 
 
 class JSD100AudioProcessor(AudioProcessor):
