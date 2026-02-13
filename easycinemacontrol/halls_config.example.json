@@ -5,19 +5,54 @@
       "name": "Зал 1",
       "ip": "192.168.1.61",
       "port": 43748,
-      "audio_vendor": "cp750"
+      "audio_vendor": "jsd100"
     },
     {
       "id": "hall2",
       "name": "Зал 2",
       "ip": "192.168.1.62",
       "port": 43748,
-      "audio_vendor": "jsd100"
+      "audio_vendor": "cp750"
     },
-    {
+        {
       "id": "hall3",
       "name": "Зал 3",
       "ip": "192.168.1.63",
+      "port": 43748,
+      "audio_vendor": "cp750"
+    },
+        {
+      "id": "hall4",
+      "name": "Зал 4",
+      "ip": "192.168.1.64",
+      "port": 43748,
+      "audio_vendor": "cp750"
+    },
+        {
+      "id": "hall5",
+      "name": "Зал 5",
+      "ip": "192.168.1.65",
+      "port": 43748,
+      "audio_vendor": "cp750"
+    },
+        {
+      "id": "hall6",
+      "name": "Зал 6",
+      "ip": "192.168.1.66",
+      "port": 43748,
+      "audio_vendor": "cp750"
+    },
+        {
+      "id": "hall7",
+      "name": "Зал 7",
+      "ip": "192.168.1.67",
+      "port": 43748,
+      "audio_vendor": "cp750"
+    },
+    {
+      "id": "hall8",
+      "name": "Зал 8",
+      "ip": "192.168.1.68",
       "port": 43748,
       "audio_vendor": "cp750"
     }
